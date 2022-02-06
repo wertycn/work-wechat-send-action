@@ -1,0 +1,42 @@
+name: 'Work wechat agent message send'
+description: '企业微信应用消息发送插件'
+inputs:
+  wechat_id:
+    description: '企业微信ID'
+    required: true
+    default: ''
+  agent_secret:
+    description: '企业微信自建应用密钥'
+    required: true
+    default: ''
+  agent_id:
+    description: '企业微信自建应用ID(如:1000002)'
+    required: true
+    default: ''
+  to_user:
+    description: '消息接收人，多个使用竖线|分割,默认为空发送给应用下所有人'
+    required: false
+    default: '@all'
+  msgtype:
+    description: '消息类型，当前支持text,markdown两种类型'
+    required: false
+    default: 'text'
+  content:
+    description: '消息内容换行使用\n'
+    required: true
+    default: ''
+  cache_path:
+    description: 'token缓存目录'
+    required: false
+    default: '~/.wechat_token/'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.wechat_id }}
+    - ${{ inputs.agent_secret }}
+    - ${{ inputs.agent_id }}
+    - ${{ inputs.to_user }}
+    - ${{ inputs.msgtype }}
+    - ${{ inputs.content }}
+    - ${{ inputs.cache_path }}

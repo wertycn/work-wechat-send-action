@@ -1,0 +1,12 @@
+{
+  "touser" : "",
+  "msgtype" : "markdown",
+  "agentid" : 1,
+  "markdown" : {
+    "content" : ""
+  },
+  "safe":0,
+  "enable_id_trans": 0,
+  "enable_duplicate_check": 0,
+  "duplicate_check_interval": 60
+}
