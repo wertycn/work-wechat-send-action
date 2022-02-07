@@ -9,6 +9,5 @@
 **支持发送模式**：
 * <font color=\"warning\">调用时发送</font>
 * <font color=\"warning\">完成时发送</font>
-* <font color=\"warning\">调用及结束时均发送</font>
 
 > <font color=\"comment\">详情请点击:</font> [github](https://github.com/wertycn/work-wechat-send-action)

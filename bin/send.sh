@@ -5,11 +5,11 @@
 
 WORK_DIR=`dirname $0`
 content_script='.'${MSG_TYPE}'.content="'${CONTENT}'"'
-cat $WORK_DIR/../template/${MSG_TYPE}.json | jq .agentid=1000003 | jq '.touser="@all"' |  jq "$content_script"  > ./.__wechat_message_body.json
+cat $WORK_DIR/../template/${MSG_TYPE}.json | jq .agentid=$AGENT_ID | jq '.touser="@all"' |  jq "$content_script"  > ./.__wechat_message_body.json
 MESSAGE_BODY=`cat ./.__wechat_message_body.json | jq .`
 echo "$MESSAGE_BODY"
 # 获取token
-token_response=`curl -s -S "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${CORP_ID}&corpsecret=${CROP_SECRET}"`
+token_response=`curl -s -S "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${WECHAT_ID}&corpsecret=${AGENT_SECRET}"`
 # 判断请求是否成功
 errcode=`echo $token_response | jq .errcode`
 if [ "x$errcode" != "x0" ]; then

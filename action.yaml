@@ -29,6 +29,10 @@ inputs:
     description: 'token缓存目录'
     required: false
     default: '~/.wechat_token/'
+  send_step:
+    description: '消息发送时机 调用时(main)或完成时(post)'
+    required: false
+    default: 'main'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -40,3 +44,6 @@ runs:
     - ${{ inputs.msgtype }}
     - ${{ inputs.content }}
     - ${{ inputs.cache_path }}
+    - ${{ inputs.send_step }}
+  entrypoint: '/opt/bin/main.sh'
+  post-entrypoint: '/opt/bin/post.sh'
