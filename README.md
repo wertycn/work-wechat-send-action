@@ -13,23 +13,15 @@
 使用方式：
 
 ```yaml
-- name: 缓存配置
-  uses: actions/cache@v2
-  with:
-    path: ~/.wechat_token
-    key: ${{ runner.os }}-wechat-token
-    restore-keys: ${{ runner.os }}-wechat-token
 - name: 企业微信markdown消息发送
   uses: wertycn/work-wechat-send-action@main
-    #               --sink=wechat:?corp_id=wwd992b74a155ca424&corp_secret=k6Ot-SE5Zwp02ouyyiFO_JezSHsGDeD0FVeKtxkJDj0&agent_id=1000002&to_user=&level=Normal&label=K8S-Alert-Prod&msg_type=markdown
   with:
     wechat_id: xxxx # 企业微信id
     agent_secret: xxxx # 应用密钥
     agent_id: 1000002 #应用id
-    to_user:  xx # 消息接收人，多个使用竖线|分割,默认为空发送给所有人
-    cache_token: true # 缓存token 需配合cache action使用,默认不开启
-    cache_path: ~/.wechat_token
+    to_user:  @all # 消息接收人，多个使用竖线|分割,默认为空发送给所有人
     msgtype: markdown
+    send_step: main # 消息发送时机 main 正常流程  post action 执行完成后发送
     content: "您的会议室已经预定，稍后会同步到`邮箱` 
         >**事项详情** 
         >事　项：<font color=\"info\">开会</font> 
@@ -48,4 +40,5 @@
 
 自定义action参考文档
 https://docs.github.com/cn/actions/creating-actions/about-custom-actions#further-reading
+
 
