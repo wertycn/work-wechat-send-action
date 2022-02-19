@@ -1,7 +1,8 @@
 name: 'Work wechat agent message send'
 description: '企业微信应用消息发送插件'
-icon: send
-color: green
+branding:
+  icon: 'send'  
+  color: 'green'
 inputs:
   wechat_id:
     description: '企业微信ID'
