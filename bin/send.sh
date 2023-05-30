@@ -5,7 +5,7 @@
 
 WORK_DIR=`dirname $0`
 content_script='.'${MSG_TYPE}'.content="'${CONTENT}'"'
-cat $WORK_DIR/../template/${MSG_TYPE}.json | jq .agentid=$AGENT_ID | jq '.touser="@all"' |  jq "$content_script"  > ./.__wechat_message_body.json
+cat $WORK_DIR/../template/${MSG_TYPE}.json | jq .agentid=$AGENT_ID | jq '.touser="$TO_USER"' |  jq "$content_script"  > ./.__wechat_message_body.json
 MESSAGE_BODY=`cat ./.__wechat_message_body.json | jq .`
 echo "$MESSAGE_BODY"
 # 获取token
